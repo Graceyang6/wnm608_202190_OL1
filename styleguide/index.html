@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TennisLab Style Guide</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="../reset.css">
+  <link rel="stylesheet" href="../storetheme.css">
+  <link rel="stylesheet" href="../style.css">
+
+
+  <link rel="stylesheet" href="styleguide.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="../index.php">TennisLab</a>
+    <nav class="nav-links">
+      <a href="../index.php">Home</a>
+      <a href="../products.php">Products</a>
+      <a class="is-active" href="./">Style Guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="sg-main">
+
+
+  <section class="sg-hero">
+    <div class="container">
+      <div class="sg-hero-inner">
+        <div>
+          <h1 class="sg-title">Style Guide</h1>
+          <p class="sg-subtitle">
+            Design system for TennisLab: colors, typography, spacing, UI components, and iconography.
+          </p>
+        </div>
+        <div class="sg-badges">
+          <span class="sg-badge">Inter</span>
+          <span class="sg-badge">Responsive</span>
+          <span class="sg-badge">Reusable Components</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sg-jumplinks">
+    <div class="container">
+      <div class="sg-jumpgrid">
+        <a class="sg-jump" href="#colors">Colors</a>
+        <a class="sg-jump" href="#type">Typography</a>
+        <a class="sg-jump" href="#spacing">Spacing</a>
+        <a class="sg-jump" href="#buttons">Buttons</a>
+        <a class="sg-jump" href="#forms">Forms</a>
+        <a class="sg-jump" href="#cards">Cards</a>
+        <a class="sg-jump" href="#icons">Iconography</a>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="colors" class="sg-section">
+    <div class="container">
+      <header class="sg-section-header">
+        <h2>Colors</h2>
+        <p class="sg-muted">Primary brand colors plus neutral UI colors.</p>
+      </header>
+
+      <div class="sg-grid-2">
+        <div class="sg-card">
+          <h3 class="sg-h3">Brand</h3>
+          <div class="sg-swatches">
+            <div class="sg-swatch" style="--swatch:#22c55e;">
+              <div class="sg-swatch-chip"></div>
+              <div class="sg-swatch-meta">
+                <div class="sg-swatch-name">Performance Green</div>
+                <div class="sg-code">#22C55E</div>
+                <div class="sg-note">Primary CTA + highlights</div>
+              </div>
+            </div>
+
+            <div class="sg-swatch" style="--swatch:#0b1220;">
+              <div class="sg-swatch-chip"></div>
+              <div class="sg-swatch-meta">
+                <div class="sg-swatch-name">Deep Navy</div>
+                <div class="sg-code">#0B1220</div>
+                <div class="sg-note">Headings + nav</div>
+              </div>
+            </div>
+
+            <div class="sg-swatch" style="--swatch:#0ea5e9;">
+              <div class="sg-swatch-chip"></div>
+              <div class="sg-swatch-meta">
+                <div class="sg-swatch-name">Accent Blue</div>
+                <div class="sg-code">#0EA5E9</div>
+                <div class="sg-note">Links + focus states</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sg-card">
+          <h3 class="sg-h3">Neutrals</h3>
+          <div class="sg-swatches">
+            <div class="sg-swatch" style="--swatch:#ffffff;">
+              <div class="sg-swatch-chip is-outline"></div>
+              <div class="sg-swatch-meta">
+                <div class="sg-swatch-name">White</div>
+                <div class="sg-code">#FFFFFF</div>
+                <div class="sg-note">Cards + backgrounds</div>
+              </div>
+            </div>
+
+            <div class="sg-swatch" style="--swatch:#f3f4f6;">
+              <div class="sg-swatch-chip"></div>
+              <div class="sg-swatch-meta">
+                <div class="sg-swatch-name">Soft Gray</div>
+                <div class="sg-code">#F3F4F6</div>
+                <div class="sg-note">Section backgrounds</div>
+              </div>
+            </div>
+
+            <div class="sg-swatch" style="--swatch:#111827;">
+              <div class="sg-swatch-chip"></div>
+              <div class="sg-swatch-meta">
+                <div class="sg-swatch-name">Ink</div>
+                <div class="sg-code">#111827</div>
+                <div class="sg-note">Body text</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-callout">
+        <strong>Accessibility tip:</strong> Use Deep Navy / Ink for text on light backgrounds, and keep CTA text contrast high.
+      </div>
+    </div>
+  </section>
+
+
+  <section id="type" class="sg-section sg-section-alt">
+    <div class="container">
+      <header class="sg-section-header">
+        <h2>Typography</h2>
+        <p class="sg-muted">Inter is used across headings and body for a modern, clean look.</p>
+      </header>
+
+      <div class="sg-grid-2">
+        <div class="sg-card">
+          <h3 class="sg-h3">Type Scale</h3>
+
+          <div class="sg-type-row">
+            <div class="sg-type-sample sg-display">Display / 44</div>
+            <div class="sg-type-meta">font-size: 44px • weight: 700</div>
+          </div>
+
+          <div class="sg-type-row">
+            <div class="sg-type-sample sg-h1">H1 / 32</div>
+            <div class="sg-type-meta">font-size: 32px • weight: 700</div>
+          </div>
+
+          <div class="sg-type-row">
+            <div class="sg-type-sample sg-h2">H2 / 24</div>
+            <div class="sg-type-meta">font-size: 24px • weight: 700</div>
+          </div>
+
+          <div class="sg-type-row">
+            <div class="sg-type-sample sg-h3">H3 / 18</div>
+            <div class="sg-type-meta">font-size: 18px • weight: 600</div>
+          </div>
+
+          <div class="sg-type-row">
+            <div class="sg-type-sample sg-body">Body / 16 — This is the default body style.</div>
+            <div class="sg-type-meta">font-size: 16px • weight: 400 • line-height: 1.6</div>
+          </div>
+
+          <div class="sg-type-row">
+            <div class="sg-type-sample sg-small">Small / 13 — Secondary UI notes & helper text.</div>
+            <div class="sg-type-meta">font-size: 13px • weight: 400</div>
+          </div>
+        </div>
+
+        <div class="sg-card">
+          <h3 class="sg-h3">Text Styles</h3>
+          <p class="sg-body">
+            TennisLab tone is <strong>performance-focused</strong>: clean, confident, and minimal.
+            Use short sentences and clear labels.
+          </p>
+
+          <div class="sg-example">
+            <div class="sg-label">Example headline</div>
+            <div class="sg-h2">Engineered for speed & precision</div>
+          </div>
+
+          <div class="sg-example">
+            <div class="sg-label">Example paragraph</div>
+            <p class="sg-body sg-muted">
+              Compare rackets, shoes, and accessories designed for competitive and recreational players.
+              Shop with confidence using clear specs and reviews.
+            </p>
+          </div>
+
+          <div class="sg-example">
+            <div class="sg-label">Links</div>
+            <a class="sg-link" href="#type">This is a link style</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="spacing" class="sg-section">
+    <div class="container">
+      <header class="sg-section-header">
+        <h2>Spacing</h2>
+        <p class="sg-muted">Use consistent spacing to keep layouts clean and scannable.</p>
+      </header>
+
+      <div class="sg-card">
+        <div class="sg-spacing-grid">
+          <div class="sg-space">
+            <div class="sg-space-bar" style="width:8px;"></div>
+            <div class="sg-space-meta"><strong>8px</strong> — micro spacing</div>
+          </div>
+          <div class="sg-space">
+            <div class="sg-space-bar" style="width:12px;"></div>
+            <div class="sg-space-meta"><strong>12px</strong> — tight spacing</div>
+          </div>
+          <div class="sg-space">
+            <div class="sg-space-bar" style="width:16px;"></div>
+            <div class="sg-space-meta"><strong>16px</strong> — default padding</div>
+          </div>
+          <div class="sg-space">
+            <div class="sg-space-bar" style="width:24px;"></div>
+            <div class="sg-space-meta"><strong>24px</strong> — section spacing</div>
+          </div>
+          <div class="sg-space">
+            <div class="sg-space-bar" style="width:32px;"></div>
+            <div class="sg-space-meta"><strong>32px</strong> — large spacing</div>
+          </div>
+          <div class="sg-space">
+            <div class="sg-space-bar" style="width:48px;"></div>
+            <div class="sg-space-meta"><strong>48px</strong> — hero/major breaks</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="buttons" class="sg-section sg-section-alt">
+    <div class="container">
+      <header class="sg-section-header">
+        <h2>Buttons</h2>
+        <p class="sg-muted">Primary for main actions, secondary for supporting actions.</p>
+      </header>
+
+      <div class="sg-grid-2">
+        <div class="sg-card">
+          <h3 class="sg-h3">Variants</h3>
+          <div class="sg-row">
+            <button class="sg-btn sg-btn-primary" type="button">Primary</button>
+            <button class="sg-btn sg-btn-secondary" type="button">Secondary</button>
+            <button class="sg-btn sg-btn-ghost" type="button">Ghost</button>
+          </div>
+          <div class="sg-row">
+            <button class="sg-btn sg-btn-primary" type="button" disabled>Disabled</button>
+          </div>
+        </div>
+
+        <div class="sg-card">
+          <h3 class="sg-h3">Usage</h3>
+          <ul class="sg-list">
+            <li><strong>Primary:</strong> Add to cart, Checkout, Confirm</li>
+            <li><strong>Secondary:</strong> Learn more, Compare</li>
+            <li><strong>Ghost:</strong> Less important actions, inline controls</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="forms" class="sg-section">
+    <div class="container">
+      <header class="sg-section-header">
+        <h2>Forms</h2>
+        <p class="sg-muted">Clear labels, helpful hints, visible focus states.</p>
+      </header>
+
+      <div class="sg-grid-2">
+        <div class="sg-card">
+          <h3 class="sg-h3">Inputs</h3>
+
+          <label class="sg-field">
+            <span class="sg-label">Email</span>
+            <input class="sg-input" type="email" placeholder="you@example.com" />
+            <span class="sg-help">We’ll never share your email.</span>
+          </label>
+
+          <label class="sg-field">
+            <span class="sg-label">Search</span>
+            <input class="sg-input" type="text" placeholder="Search rackets, shoes, strings..." />
+          </label>
+
+          <label class="sg-field">
+            <span class="sg-label">Message</span>
+            <textarea class="sg-input sg-textarea" rows="4" placeholder="Type your message..."></textarea>
+          </label>
+
+          <div class="sg-row">
+            <button class="sg-btn sg-btn-primary" type="button">Submit</button>
+            <button class="sg-btn sg-btn-secondary" type="button">Cancel</button>
+          </div>
+        </div>
+
+        <div class="sg-card">
+          <h3 class="sg-h3">Checkbox + Radio</h3>
+
+          <label class="sg-check">
+            <input type="checkbox" />
+            <span>Send me product updates</span>
+          </label>
+
+          <div class="sg-radio-group">
+            <div class="sg-muted sg-small" style="margin-bottom:10px;">Preferred level</div>
+            <label class="sg-check">
+              <input type="radio" name="level" />
+              <span>Beginner</span>
+            </label>
+            <label class="sg-check">
+              <input type="radio" name="level" />
+              <span>Intermediate</span>
+            </label>
+            <label class="sg-check">
+              <input type="radio" name="level" />
+              <span>Advanced</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="cards" class="sg-section sg-section-alt">
+    <div class="container">
+      <header class="sg-section-header">
+        <h2>Cards</h2>
+        <p class="sg-muted">Use cards for products and content blocks.</p>
+      </header>
+
+      <div class="sg-card">
+        <div class="sg-cards">
+          <article class="sg-product">
+            <div class="sg-product-media">
+              <div class="sg-product-placeholder">Image</div>
+            </div>
+            <div class="sg-product-body">
+              <div class="sg-product-title">Carbon Pro Racket</div>
+              <div class="sg-product-meta">Control • 300g • 16x19</div>
+              <div class="sg-product-price">$199</div>
+              <button class="sg-btn sg-btn-primary" type="button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="sg-product">
+            <div class="sg-product-media">
+              <div class="sg-product-placeholder">Image</div>
+            </div>
+            <div class="sg-product-body">
+              <div class="sg-product-title">CourtSpeed Shoes</div>
+              <div class="sg-product-meta">Stability • Cushion • Grip</div>
+              <div class="sg-product-price">$129</div>
+              <button class="sg-btn sg-btn-secondary" type="button">View Details</button>
+            </div>
+          </article>
+
+          <article class="sg-product">
+            <div class="sg-product-media">
+              <div class="sg-product-placeholder">Image</div>
+            </div>
+            <div class="sg-product-body">
+              <div class="sg-product-title">SpinMax Strings</div>
+              <div class="sg-product-meta">Power • Spin • Durability</div>
+              <div class="sg-product-price">$18</div>
+              <button class="sg-btn sg-btn-ghost" type="button">Compare</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="icons" class="sg-section">
+    <div class="container">
+      <header class="sg-section-header">
+        <h2>Iconography</h2>
+        <p class="sg-muted">Simple outline icons with consistent stroke and rounded corners.</p>
+      </header>
+
+      <div class="sg-grid-2">
+        <div class="sg-card">
+          <h3 class="sg-h3">Guidelines</h3>
+          <ul class="sg-list">
+            <li>Stroke: <strong>2px</strong></li>
+            <li>Corner radius: <strong>6px</strong></li>
+            <li>Use outline icons to match the clean aesthetic</li>
+            <li>Keep icons the same size in a set (ex: 24px)</li>
+          </ul>
+        </div>
+
+        <div class="sg-card">
+          <h3 class="sg-h3">Examples</h3>
+          <div class="sg-icons">
+            <!-- cart -->
+            <div class="sg-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 6h15l-2 8H7L6 6Z"></path>
+                <path d="M6 6 5 3H2"></path>
+                <path d="M8 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
+                <path d="M18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
+              </svg>
+              <div class="sg-small sg-muted">Cart</div>
+            </div>
+
+      
+            <div class="sg-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"></path>
+                <path d="M16.5 16.5 21 21"></path>
+              </svg>
+              <div class="sg-small sg-muted">Search</div>
+            </div>
+
+       
+            <div class="sg-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21s-7-4.5-9.2-9C1 8 3.2 5.5 6.2 5.5c1.8 0 3.1 1 3.8 2
+                         .7-1 2-2 3.8-2 3 0 5.2 2.5 3.4 6.5C19 16.5 12 21 12 21Z"></path>
+              </svg>
+              <div class="sg-small sg-muted">Favorite</div>
+            </div>
+
+        
+            <div class="sg-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2l3 7 7 .6-5.3 4.5 1.7 7.1L12 17.8 5.6 21.2 7.3 14 2 9.6 9 9l3-7Z"></path>
+              </svg>
+              <div class="sg-small sg-muted">Rating</div>
+            </div>
+          </div>
+
+          <div class="sg-callout" style="margin-top:14px;">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="sg-footer">
+    <div class="container">
+      <div class="sg-footer-inner">
+        <div class="sg-muted">© TennisLab • Style Guide</div>
+        <a class="sg-link" href="#colors">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
