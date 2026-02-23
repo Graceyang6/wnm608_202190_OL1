@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TennisLab — Performance Tennis Gear</title>
 
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="storetheme.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -30,7 +33,6 @@
 </header>
 
 <main id="top">
-
 
 <section class="hero">
   <div class="container hero-grid">
@@ -75,7 +77,6 @@
 
   </div>
 </section>
-
 
 <section class="section" id="products">
   <div class="container">
@@ -124,14 +125,11 @@
       </article>
 
     </div>
-
   </div>
 </section>
 
-
 <section class="section section--alt" id="deals">
   <div class="container">
-
     <div class="two-col">
 
       <div>
@@ -149,10 +147,8 @@
       </div>
 
     </div>
-
   </div>
 </section>
-
 
 <section class="section" id="about">
   <div class="container">
@@ -165,7 +161,6 @@
     </div>
   </div>
 </section>
-
 
 <section class="section section--alt" id="newsletter">
   <div class="container newsletter">
