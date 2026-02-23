@@ -1,0 +1,137 @@
+
+
+.sg-main {
+  padding-bottom: 40px;
+}
+
+.sg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.sg-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  background: #fff;
+}
+
+.sg-color {
+  height: 80px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+}
+
+.sg-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.sg-radius-demo {
+  width: 200px;
+  height: 60px;
+  background: rgba(15,23,42,0.06);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.sg-shadow-demo {
+  width: 200px;
+  height: 60px;
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+
+
+
+.sg-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.sg-icon-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sg-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  background: rgba(15,23,42,0.03);
+  flex: 0 0 auto;
+}
+
+.sg-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.sg-icon-title {
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.sg-icon-meta {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+}
+
+
+.sg-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.sg-icon-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+.sg-icon-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
+.sg-icon-btn:focus-visible {
+  outline: 2px solid rgba(0,0,0,0.35);
+  outline-offset: 2px;
+}
+
+@media (max-width: 860px) {
+  .sg-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sg-icon-grid {
+    grid-template-columns: 1fr;
+  }
+}
