@@ -5,17 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TennisLab Style Guide</title>
 
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="../storetheme.css">
   <link rel="stylesheet" href="../style.css">
-
-  
   <link rel="stylesheet" href="styleguide.css">
 </head>
 
@@ -27,12 +23,12 @@
     <nav class="nav-links">
       <a href="../index.php">Home</a>
       <a href="../products.php">Products</a>
-      <a class="is-active" href="./">Style Guide</a>
+      <a class="is-active" href="index.html">Style Guide</a>
     </nav>
   </div>
 </header>
 
-<main class="sg-main">
+<main id="top" class="sg-main">
 
   <section class="sg-hero">
     <div class="container">
@@ -40,7 +36,7 @@
         <div>
           <h1 class="sg-title">Style Guide</h1>
           <p class="sg-subtitle">
-            Design system for TennisLab: colors, typography, spacing, UI components, and interactive form elements.
+            The TennisLab design system defines the visual language of the website, including colors, typography, spacing, reusable components, and form interactions.
           </p>
         </div>
         <div class="sg-badges">
@@ -67,7 +63,6 @@
     </div>
   </section>
 
-  
   <section id="colors" class="sg-section">
     <div class="container">
       <header class="sg-section-header">
@@ -147,7 +142,6 @@
     </div>
   </section>
 
-  
   <section id="type" class="sg-section sg-section-alt">
     <div class="container">
       <header class="sg-section-header">
@@ -199,7 +193,7 @@
 
           <div class="sg-example">
             <div class="sg-label">Example headline</div>
-            <div class="sg-h2">Engineered for speed & precision</div>
+            <div class="sg-h2">Engineered for speed &amp; precision</div>
           </div>
 
           <div class="sg-example">
@@ -213,7 +207,6 @@
     </div>
   </section>
 
-  
   <section id="spacing" class="sg-section">
     <div class="container">
       <header class="sg-section-header">
@@ -234,7 +227,6 @@
     </div>
   </section>
 
-  
   <section id="buttons" class="sg-section sg-section-alt">
     <div class="container">
       <header class="sg-section-header">
@@ -287,7 +279,6 @@
     </div>
   </section>
 
-  
   <section id="forms" class="sg-section">
     <div class="container">
       <header class="sg-section-header">
@@ -352,7 +343,6 @@
     </div>
   </section>
 
-  
   <section id="controls" class="sg-section sg-section-alt">
     <div class="container">
       <header class="sg-section-header">
@@ -459,7 +449,6 @@
     </div>
   </section>
 
-  
   <section id="cards" class="sg-section">
     <div class="container">
       <header class="sg-section-header">
@@ -470,8 +459,9 @@
       <div class="sg-card">
         <div class="sg-cards">
           <article class="sg-product">
-             <div class="sg-product-media"><img src="../images/carbon-pro-racket.jpg" alt="Carbon Pro Racket">
-             </div>
+            <div class="sg-product-media">
+              <img src="../images/carbon-pro-racket.jpg" alt="Carbon Pro Racket">
+            </div>
             <div class="sg-product-body">
               <div class="sg-product-title">Carbon Pro Racket</div>
               <div class="sg-product-meta">Control • 300g • 16x19</div>
@@ -481,7 +471,9 @@
           </article>
 
           <article class="sg-product">
-            <div class="sg-product-media"><img src="../images/courtspeed-shoes.jpg" alt="CourtSpeed Shoes"></div>
+            <div class="sg-product-media">
+              <img src="../images/courtspeed-shoes.jpg" alt="CourtSpeed Shoes">
+            </div>
             <div class="sg-product-body">
               <div class="sg-product-title">CourtSpeed Shoes</div>
               <div class="sg-product-meta">Stability • Cushion • Grip</div>
@@ -491,7 +483,9 @@
           </article>
 
           <article class="sg-product">
-            <div class="sg-product-media"><img src="../images/spinmax-strings.jpg" alt="SpinMax Strings"></div>
+            <div class="sg-product-media">
+              <img src="../images/spinmax-strings.jpg" alt="SpinMax Strings">
+            </div>
             <div class="sg-product-body">
               <div class="sg-product-title">SpinMax Strings</div>
               <div class="sg-product-meta">Power • Spin • Durability</div>
@@ -504,7 +498,6 @@
     </div>
   </section>
 
-   
   <section id="icons" class="sg-section sg-section-alt">
     <div class="container">
       <header class="sg-section-header">
@@ -546,8 +539,7 @@
 
             <div class="sg-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 21s-7-4.5-9.2-9C1 8 3.2 5.5 6.2 5.5c1.8 0 3.1 1 3.8 2
-                         .7-1 2-2 3.8-2 3 0 5.2 2.5 3.4 6.5C19 16.5 12 21 12 21Z"></path>
+                <path d="M12 21s-7-4.5-9.2-9C1 8 3.2 5.5 6.2 5.5c1.8 0 3.1 1 3.8 2 .7-1 2-2 3.8-2 3 0 5.2 2.5 3.4 6.5C19 16.5 12 21 12 21Z"></path>
               </svg>
               <div class="sg-small sg-muted">Favorite</div>
             </div>
@@ -568,7 +560,7 @@
     <div class="container">
       <div class="sg-footer-inner">
         <div class="sg-muted">© TennisLab • Style Guide</div>
-        <a class="sg-link" href="#colors">Back to top</a>
+        <a class="sg-link" href="#top">Back to top</a>
       </div>
     </div>
   </footer>
