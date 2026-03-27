@@ -13,7 +13,7 @@ $user = $users[0];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Admin</title>
 
-  <!-- your existing styles -->
+  
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="../storetheme.css">
   <link rel="stylesheet" href="../style.css">
