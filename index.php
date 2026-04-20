@@ -1,228 +1,104 @@
 <?php
-$filename = "../data/users.json";
-$file = file_get_contents($filename);
-$users = json_decode($file, true);
-
-$selectedIndex = isset($_GET['user']) ? (int)$_GET['user'] : 0;
-
-if ($selectedIndex < 0 || $selectedIndex >= count($users)) {
-  $selectedIndex = 0;
-}
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $editIndex = (int)$_POST["user_index"];
-
-  if ($editIndex >= 0 && $editIndex < count($users)) {
-    $users[$editIndex]["name"] = trim($_POST["name"]);
-    $users[$editIndex]["type"] = trim($_POST["type"]);
-    $users[$editIndex]["email"] = trim($_POST["email"]);
-
-    $classes = array_map('trim', explode(',', $_POST["classes"]));
-    $classes = array_filter($classes, fn($value) => $value !== '');
-    $classes = array_map('intval', $classes);
-
-    $users[$editIndex]["classes"] = $classes;
-
-    file_put_contents($filename, json_encode($users, JSON_PRETTY_PRINT));
-
-    $selectedIndex = $editIndex;
-  }
-}
-
-$user = $users[$selectedIndex];
+$pageTitle = "TennisLab — Home";
+include 'parts/head.php';
+include 'parts/header.php';
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Admin</title>
 
-  <link rel="stylesheet" href="../reset.css">
-  <link rel="stylesheet" href="../storetheme.css">
-  <link rel="stylesheet" href="../style.css">
+<main id="top">
 
-  <style>
-    body{
-      padding-bottom: 4rem;
-      background: #f8fafc;
-    }
+  <section class="hero">
+    <div class="container hero-grid">
 
-    .admin-wrap{
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
+      <div>
+        <p class="pill">Tested • Engineered • Court-Ready</p>
+        <h1>Performance gear built for your next match.</h1>
+        <p class="muted">
+          TennisLab curates rackets, shoes, balls, and accessories designed for control,
+          speed, and durability—selected for real match play.
+        </p>
 
-    .back{
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #0ea5e9;
-      text-decoration: none;
-      font-weight: 600;
-    }
+        <div class="hero-actions">
+          <a class="btn" href="products.php">Shop Gear</a>
+          <a class="btn btn--ghost" href="products.php">View Products</a>
+        </div>
 
-    .admin-layout{
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 24px;
-      align-items: start;
-    }
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>Fast</strong>
+            <span>shipping $50+</span>
+          </div>
+          <div class="stat">
+            <strong>New</strong>
+            <span>weekly drops</span>
+          </div>
+          <div class="stat">
+            <strong>Pro</strong>
+            <span>tested gear</span>
+          </div>
+        </div>
+      </div>
 
-    .admin-card{
-      background: #fff;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.08);
-      border: 1px solid #e5e7eb;
-    }
+      <div class="card feature">
+        <img src="images/racket.jpg" alt="Carbon Pro Racket">
+        <div class="card-body">
+          <h3>Starter Bundle</h3>
+          <p class="muted">Racket + balls + overgrip</p>
+          <a class="link" href="products.php">See products →</a>
+        </div>
+      </div>
 
-    h1, h2{
-      margin-bottom: 16px;
-    }
-
-    .user-list{
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 12px;
-    }
-
-    .user-list a{
-      display: block;
-      padding: 14px 16px;
-      border: 1px solid #d1d5db;
-      border-radius: 12px;
-      text-decoration: none;
-      color: #111827;
-      background: #fff;
-    }
-
-    .user-list a:hover,
-    .user-list a.active{
-      border-color: #22c55e;
-      background: #f0fdf4;
-    }
-
-    .user-meta{
-      color: #6b7280;
-      font-size: 14px;
-      margin-top: 4px;
-    }
-
-    form{
-      display: grid;
-      gap: 14px;
-    }
-
-    label{
-      font-weight: 600;
-      margin-bottom: 4px;
-      display: block;
-    }
-
-    input{
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid #d1d5db;
-      font: inherit;
-    }
-
-    button{
-      margin-top: 10px;
-      padding: 12px 18px;
-      background: #22c55e;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    button:hover{
-      opacity: 0.9;
-    }
-
-    .success{
-      margin-bottom: 16px;
-      padding: 12px 14px;
-      border-radius: 10px;
-      background: #ecfdf5;
-      color: #166534;
-      border: 1px solid #bbf7d0;
-      font-weight: 600;
-    }
-
-    @media (max-width: 800px){
-      .admin-layout{
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="admin-wrap">
-  <a class="back" href="../index.php">← Back to Home</a>
-
-  <div class="admin-layout">
-    
-    <div class="admin-card">
-      <h2>User List</h2>
-      <ul class="user-list">
-        <?php foreach($users as $index => $item): ?>
-          <li>
-            <a href="index.php?user=<?= $index; ?>" class="<?= $index === $selectedIndex ? 'active' : ''; ?>">
-              <strong><?= htmlspecialchars($item['name']); ?></strong>
-              <div class="user-meta">
-                <?= htmlspecialchars($item['type']); ?><br>
-                <?= htmlspecialchars($item['email']); ?>
-              </div>
-            </a>
-          </li>
-        <?php endforeach; ?>
-      </ul>
     </div>
+  </section>
 
-    <div class="admin-card">
-      <h1>User Editor Form</h1>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Featured Gear</h2>
+        <p class="muted">Court-tested performance essentials.</p>
+      </div>
 
-      <?php if ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
-        <div class="success">User updated successfully.</div>
-      <?php endif; ?>
+      <div class="grid cards">
 
-      <form method="post">
-        <input type="hidden" name="user_index" value="<?= $selectedIndex; ?>">
+        <article class="card">
+          <img class="thumb-img" src="images/racket.jpg" alt="Carbon Pro Racket">
+          <div class="card-body">
+            <h3>Carbon Pro Racket</h3>
+            <p class="muted">Balanced power with precision control.</p>
+            <div class="card-row">
+              <span class="price">$199</span>
+              <a class="btn btn--small" href="product.php?id=1">View</a>
+            </div>
+          </div>
+        </article>
 
-        <div>
-          <label for="name">Name</label>
-          <input id="name" type="text" name="name" value="<?= htmlspecialchars($user['name']); ?>">
-        </div>
+        <article class="card">
+          <img class="thumb-img" src="images/shoes.jpg" alt="CourtSpeed Shoes">
+          <div class="card-body">
+            <h3>CourtSpeed Shoes</h3>
+            <p class="muted">Stable support for quick movement.</p>
+            <div class="card-row">
+              <span class="price">$129</span>
+              <a class="btn btn--small" href="product.php?id=3">View</a>
+            </div>
+          </div>
+        </article>
 
-        <div>
-          <label for="type">Type</label>
-          <input id="type" type="text" name="type" value="<?= htmlspecialchars($user['type']); ?>">
-        </div>
+        <article class="card">
+          <img class="thumb-img" src="images/grip.jpg" alt="SpinMax Strings">
+          <div class="card-body">
+            <h3>SpinMax Strings</h3>
+            <p class="muted">Power, spin, and durability.</p>
+            <div class="card-row">
+              <span class="price">$18</span>
+              <a class="btn btn--small" href="product.php?id=4">View</a>
+            </div>
+          </div>
+        </article>
 
-        <div>
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" value="<?= htmlspecialchars($user['email']); ?>">
-        </div>
-
-        <div>
-          <label for="classes">Classes</label>
-          <input id="classes" type="text" name="classes" value="<?= htmlspecialchars(implode(', ', $user['classes'])); ?>">
-        </div>
-
-        <button type="submit">Save Changes</button>
-      </form>
+      </div>
     </div>
+  </section>
 
-  </div>
-</div>
+</main>
 
-</body>
-</html>
+<?php include 'parts/footer.php'; ?>
