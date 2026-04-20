@@ -1,5 +1,13 @@
 <?php
+include "config.php";
+
 $pageTitle = "TennisLab — Order Confirmation";
+
+$name = $_POST['customer_name'] ?? 'Customer';
+
+
+unset($_SESSION['cart']);
+
 include 'parts/head.php';
 include 'parts/header.php';
 ?>
@@ -9,9 +17,12 @@ include 'parts/header.php';
 
     <div class="confirm-box">
       <p class="pill">Order Complete</p>
-      <h1>Thank you for your purchase.</h1>
+      <h1>Thank you for your purchase, <?php echo h($name); ?>.</h1>
       <p class="muted">
         Your order has been successfully placed. A confirmation email will be sent shortly.
+      </p>
+      <p class="muted">
+        Your cart has now been cleared.
       </p>
 
       <div class="hero-actions">
