@@ -1,104 +1,131 @@
 <?php
-$pageTitle = "TennisLab — Home";
-include 'parts/head.php';
-include 'parts/header.php';
+include '../config.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $id = $_POST['id'] ?? '';
+  $title = $_POST['title'];
+  $price = $_POST['price'];
+  $category = $_POST['category'];
+  $description = $_POST['description'];
+  $image = $_POST['image'];
+
+  if ($id) {
+    $stmt = $conn->prepare("UPDATE products SET title=?, price=?, category=?, description=?, image=? WHERE id=?");
+    $stmt->bind_param("sdsssi", $title, $price, $category, $description, $image, $id);
+  } else {
+    $stmt = $conn->prepare("INSERT INTO products (title, price, category, description, image) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sdsss", $title, $price, $category, $description, $image);
+  }
+
+  $stmt->execute();
+
+  header("Location: index.php");
+  exit;
+}
+
+if (isset($_GET['delete'])) {
+  $id = $_GET['delete'];
+
+  $stmt = $conn->prepare("DELETE FROM products WHERE id=?");
+  $stmt->bind_param("i", $id);
+  $stmt->execute();
+
+  header("Location: index.php");
+  exit;
+}
+
+$editProduct = null;
+
+if (isset($_GET['edit'])) {
+  $id = $_GET['edit'];
+
+  $stmt = $conn->prepare("SELECT * FROM products WHERE id=?");
+  $stmt->bind_param("i", $id);
+  $stmt->execute();
+
+  $editProduct = $stmt->get_result()->fetch_assoc();
+}
+
+$products = $conn->query("SELECT * FROM products ORDER BY id DESC");
 ?>
 
-<main id="top">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Admin</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
 
-  <section class="hero">
-    <div class="container hero-grid">
+<body class="admin-page">
 
-      <div>
-        <p class="pill">Tested • Engineered • Court-Ready</p>
-        <h1>Performance gear built for your next match.</h1>
-        <p class="muted">
-          TennisLab curates rackets, shoes, balls, and accessories designed for control,
-          speed, and durability—selected for real match play.
-        </p>
+  <h1 class="page-title">Product Admin</h1>
+  <p class="page-subtitle">Add, edit, and delete products from the database.</p>
 
-        <div class="hero-actions">
-          <a class="btn" href="products.php">Shop Gear</a>
-          <a class="btn btn--ghost" href="products.php">View Products</a>
+  <form method="POST" class="form-stack">
+
+    <input type="hidden" name="id" value="<?= $editProduct['id'] ?? '' ?>">
+
+    <label>
+      Title
+      <input type="text" name="title" required value="<?= $editProduct['title'] ?? '' ?>">
+    </label>
+
+    <label>
+      Price
+      <input type="number" step="0.01" name="price" required value="<?= $editProduct['price'] ?? '' ?>">
+    </label>
+
+    <label>
+      Category
+      <input type="text" name="category" required value="<?= $editProduct['category'] ?? '' ?>">
+    </label>
+
+    <label>
+      Description
+      <textarea name="description" required><?= $editProduct['description'] ?? '' ?></textarea>
+    </label>
+
+    <label>
+      Image filename
+      <input type="text" name="image" required value="<?= $editProduct['image'] ?? '' ?>">
+    </label>
+
+    <button type="submit" class="admin-submit-btn">
+      <?= $editProduct ? 'Update Product' : 'Add Product' ?>
+    </button>
+
+  </form>
+
+  <hr>
+
+  <h2>All Products</h2>
+
+  <div class="product-grid">
+
+    <?php while ($p = $products->fetch_assoc()): ?>
+
+      <div class="product-card">
+        <img src="../images/<?= $p['image'] ?>" alt="<?= $p['title'] ?>">
+
+        <h3><?= $p['title'] ?></h3>
+        <p>$<?= $p['price'] ?></p>
+
+        <div class="admin-actions">
+          <a class="btn btn--small" href="?edit=<?= $p['id'] ?>">Edit</a>
+
+          <a 
+            class="btn btn--small" 
+            href="?delete=<?= $p['id'] ?>" 
+            onclick="return confirm('Delete this product?')"
+          >
+            Delete
+          </a>
         </div>
-
-        <div class="hero-stats">
-          <div class="stat">
-            <strong>Fast</strong>
-            <span>shipping $50+</span>
-          </div>
-          <div class="stat">
-            <strong>New</strong>
-            <span>weekly drops</span>
-          </div>
-          <div class="stat">
-            <strong>Pro</strong>
-            <span>tested gear</span>
-          </div>
-        </div>
       </div>
 
-      <div class="card feature">
-        <img src="images/racket.jpg" alt="Carbon Pro Racket">
-        <div class="card-body">
-          <h3>Starter Bundle</h3>
-          <p class="muted">Racket + balls + overgrip</p>
-          <a class="link" href="products.php">See products →</a>
-        </div>
-      </div>
+    <?php endwhile; ?>
 
-    </div>
-  </section>
+  </div>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Featured Gear</h2>
-        <p class="muted">Court-tested performance essentials.</p>
-      </div>
-
-      <div class="grid cards">
-
-        <article class="card">
-          <img class="thumb-img" src="images/racket.jpg" alt="Carbon Pro Racket">
-          <div class="card-body">
-            <h3>Carbon Pro Racket</h3>
-            <p class="muted">Balanced power with precision control.</p>
-            <div class="card-row">
-              <span class="price">$199</span>
-              <a class="btn btn--small" href="product.php?id=1">View</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb-img" src="images/shoes.jpg" alt="CourtSpeed Shoes">
-          <div class="card-body">
-            <h3>CourtSpeed Shoes</h3>
-            <p class="muted">Stable support for quick movement.</p>
-            <div class="card-row">
-              <span class="price">$129</span>
-              <a class="btn btn--small" href="product.php?id=3">View</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb-img" src="images/grip.jpg" alt="SpinMax Strings">
-          <div class="card-body">
-            <h3>SpinMax Strings</h3>
-            <p class="muted">Power, spin, and durability.</p>
-            <div class="card-row">
-              <span class="price">$18</span>
-              <a class="btn btn--small" href="product.php?id=4">View</a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<?php include 'parts/footer.php'; ?>
+</body>
+</html>
