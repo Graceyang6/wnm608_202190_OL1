@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Ross Gellar",
+    "type": "Professor",
+    "email": "rgellar1971@hotmail.com",
+    "classes": [601, 608]
+  },
+  {
+    "name": "Joey Tribbiani",
+    "type": "Actor",
+    "email": "joeytribs@aol.com",
+    "classes": [601, 608, 617, 820]
+  },
+  {
+    "name": "Monica Gellar",
+    "type": "Chef",
+    "email": "mgellar1973@hotmail.com",
+    "classes": [601, 608, 617, 820]
+  }
+]
